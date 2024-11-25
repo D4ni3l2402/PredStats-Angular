@@ -1,0 +1,46 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&display=swap');
+
+
+$custom-colors: (
+  "primary": #2A2A4D,   // Dunkles Blau-Schwarz für den Hintergrund oder Header
+  "secondary": #16213E, // Tieferes Dunkelblau für Akzente
+  "highlight": #0F3460, // Kräftiges Blau für Schaltflächen und Hover-Zustände
+  "accent": #E94560,    // Helles Rot für Warnungen, Call-to-Actions oder Kontraste
+  "neutral-light": #F5F5F5, // Helles Grau für Hintergrundflächen oder Text
+  "neutral-dark": #8D8D8D,  // Dunkles Grau für sekundären Text
+  "success": #22C55E,   // Grün für Erfolge oder positive Status
+  "danger": #DC2626,    // Rot für Fehler oder Warnungen
+  "warning": #FACC15,   // Gelb für Hinweise oder Warnungen
+  "info": #2563EB, // Hellblau für Informationen
+
+);
+
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$body-bg: #2A2A4D;
+$body-color: #FFFFFF;
+$font-family-base: "Blinker", sans-serif;
+
+.navbar-nav .nav-link {
+  color: #FFFFFF !important; // Setze die Farbe auf Weiß
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #FACC15 !important; // Helle Grautöne für den Hover-Zustand
+}
+
+.navbar-toggler {
+  border-color: #FFFFFF !important; // Setze die Randfarbe auf Weiß
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; // Setze die Hamburger-Icon-Farbe auf Weiß
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
