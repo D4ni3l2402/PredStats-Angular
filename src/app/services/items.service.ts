@@ -8,12 +8,16 @@ import {Observable} from 'rxjs';
 export class ItemsService {
 
   http = inject(HttpClient);
-  private apiURL = "https://omeda.city/items.json"
+  private apiURL = "https://omeda.city/items"
 
   constructor() { }
 
   getItems(): Observable<any> {
-    return this.http.get(this.apiURL);
+    return this.http.get(this.apiURL + ".json");
+  }
+
+  getItem(id: number): Observable<any> {
+    return this.http.get(this.apiURL + "/" + id + ".json");
   }
 
 }

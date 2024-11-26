@@ -1,0 +1,21 @@
+.category:hover {
+    background-color: #8D8D8D !important;
+    cursor: pointer;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+}
+
+.item:hover {
+  cursor: pointer;
+}
+
+.item img {
+  transition: all 0.3s ease;
+}
+
+.item:hover img {
+  scale: 1.2;
+}
