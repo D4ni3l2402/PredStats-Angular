@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemsService} from '../../services/items.service';
-import {RouterLink} from '@angular/router';
+import {RouterLink, Router} from '@angular/router';
+import {Item} from '../../interfaces/item';
 
 
 @Component({
@@ -12,13 +13,14 @@ import {RouterLink} from '@angular/router';
 export class ItemsComponent {
 
   apiURL = "https://omeda.city/";
-  items: any[] = [];
+  items: Item[] = [];
   categories: string[] = [];
 
-  constructor(private itemsService: ItemsService) {
-    this.itemsService.getItems().subscribe((data: any[]) => {
+  constructor(private itemsService: ItemsService, private router: Router) {
+    this.itemsService.getItems().subscribe((data: Item[]) => {
       data.sort((a, b) => a.name.localeCompare(b.name));
       this.items = data;
+      console.log(data)
 
       data.forEach((item) => {
         if (!this.categories.includes(item.hero_class) && item.hero_class !== null) {
@@ -27,6 +29,10 @@ export class ItemsComponent {
         }
       });
     });
+  }
+
+  goToItem(id: string) {
+    this.router.navigate(['/items', id]);
   }
 
 }

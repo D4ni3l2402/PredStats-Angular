@@ -1,3 +1,33 @@
 .logo {
   width: 8rem;
+  transition: all 0.3s;
+
+}
+
+.navbar {
+  transition: all 0.3s;
+}
+
+
+.navbar.scrolled {
+  padding: 0.5rem 1rem; /* Weniger Padding für die kleinere Navbar */
+  background-color: rgba(0, 0, 0, 0.9); /* Optional: Hintergrund leicht anpassen */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  transition: all 1.3s ease-in-out;
+
+}
+
+.navbar.scrolled .navbar-brand {
+  font-size: 1.2rem; /* Kleinere Schriftgröße bei gescrollter Navbar */
+}
+
+nav.navbar.shrink {
+  height: 80px;
+}
+
+nav.navbar.shrink .logo {
+  width: 7rem;
 }

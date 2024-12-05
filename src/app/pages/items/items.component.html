@@ -3,7 +3,7 @@
   <!--      <h3>{{ item.display_name}}</h3>-->
 
   <!--  }-->
-  <div class="d-flex mt-5">
+  <div class="d-flex mt-header">
     <a class="fs-4 nav-link" routerLink="/">< Home</a>
     <h2 class="mx-auto">Items</h2>
   </div>
@@ -11,7 +11,7 @@
   <div class="row mt-5">
     @for (category of categories; track category){
       <div class="col-lg-2">
-        <div class="category p-2 text-center bg-secondary">{{category}}</div>
+        <div class="category p-2 text-center bg-secondary my-2 my-lg-0">{{category}}</div>
       </div>
     }
   </div>
@@ -20,13 +20,15 @@
   @for (item of items; track item.id){
     <div class="col-lg-3 ">
       <div class="item m-3 p-2 text-center bg-secondary shadow-sm overflow-hidden">
-        <img src="{{apiURL}}/{{item.image}}" alt="{{item.display_name}}" class="image img-fluid">
-        <p class="">{{item.display_name}}</p>
-        @if(item.total_price){
-          <p class=""><span class="text-warning">{{item.total_price}}</span> Gold</p>
-        } @else {
-          <p>Free</p>
-        }
+        <a class="nav-link" (click)="goToItem(item.name)">
+          <img src="{{apiURL}}/{{item.image}}" alt="{{item.display_name}}" class="image img-fluid">
+          <p class="">{{item.display_name}}</p>
+          @if(item.total_price){
+            <p class=""><span class="text-warning">{{item.total_price}}</span> Gold</p>
+          } @else {
+            <p>Free</p>
+          }
+        </a>
       </div>
     </div>
   }

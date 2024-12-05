@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Item} from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,11 @@ export class ItemsService {
 
   constructor() { }
 
-  getItems(): Observable<any> {
-    return this.http.get(this.apiURL + ".json");
+  getItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.apiURL + ".json");
   }
 
-  getItem(id: number): Observable<any> {
+  getItem(id: number | null): Observable<any> {
     return this.http.get(this.apiURL + "/" + id + ".json");
   }
 
