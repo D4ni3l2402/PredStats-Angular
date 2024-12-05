@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="d-flex mt-header">
+    <a class="fs-4 nav-link" routerLink="/items">< Items</a>
+    <h1 class="mx-auto">{{ item?.display_name }}</h1>
+  </div>
+
+  <h3 class="text-center my-4">
+    @if (item?.total_price) {
+      {{ item?.total_price }} <span class="text-warning ">Gold</span>
+    } @else {
+      Free
+    }
+  </h3>
+
+  <div class="row mb-5">
+    <div class="col-lg-4 col-md-12">
+      <div class="d-flex justify-content-center mb-4"><img src="{{apiURL}}/{{item?.image}}" alt="{{item?.display_name}}"
+                                                           class="img-fluid image"></div>
+      @if (statsEntries) {
+        @for (stat of statsEntries; track stat) {
+          <div class="d-flex align-items-center mb-3">
+            <h4 class="text-uppercase m-0">{{ stat[0] }}: </h4>
+            <p class="mb-0 flex-grow-1 text-end text-success fs-5">+ {{ stat[1] }}</p>
+          </div>
+        }
+      }
+    </div>
+
+    <div class="col-lg-7 col-md-12 bg-secondary p-5 shadow-sm end">
+      @if (effects && effects.length > 0) {
+        <h2 class="fs-2 text-center">Effects</h2>
+        @for (eff of effects; track eff) {
+          <h4 class="text-uppercase m-0">{{ eff?.name }}: </h4>
+
+          @if (eff.condition) {
+            <p class="my-2 flex-grow-1 text-success fs-5"><span
+              class="text-accent">Condition:</span> {{ removeHTMLTags(eff?.condition) }}:</p>
+          }
+          @if (eff.cooldown) {
+            <p class="my-2 flex-grow-1 text-success fs-5"><span
+              class="text-accent">Cooldown:</span> {{ removeHTMLTags(eff?.cooldown) }}</p>
+          }
+          @if (eff.menu_description) {
+            <p class="flex-grow-1 text-success fs-5" [innerHTML]="formatMessage(eff?.menu_description)"></p>
+          }
+        }
+      } @else {
+        <div class="w-100 h-100 row justify-content-center align-items-center"><h1 class="text-center">No effects</h1></div>
+      }
+    </div>
+
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-lg-5 p-3 bg-secondary">
+      <h3 class="fs-3 text-center">Requirements</h3>
+      <div class="d-flex justify-content-center gap-3">
+        @for (req of requirements; track req) {
+          <a routerLink="/items/{{req}}">
+            <div class="item bg-highlight shadow-lg">
+              <img src="{{apiURL}}/{{findItem(req)?.image}}" alt="" class="img-fluid">
+
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="col-lg-5 p-3 bg-secondary">
+      <h3 class="fs-3 text-center">Requirements</h3>
+      <div class="d-flex gap-3">
+        <div class="item  bg-highlight shadow-lg"></div>
+        <div class="item  bg-highlight shadow-lg"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
