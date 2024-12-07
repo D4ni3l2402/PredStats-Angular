@@ -1,6 +1,27 @@
-.category:hover {
-    background-color: #8D8D8D !important;
+.category {
+  position: relative;
+}
+
+.category::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(127, 255, 212, 0.467) !important;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 10px rgba(127, 255, 212, 0.5);
+}
+
+.category:hover::after {
+    /* background-color: #8D8D8D !important; */
+    width: 100%;
     cursor: pointer;
+}
+
+.category:active::after {
+  background-color: rgba(255, 127, 80, 0.467) !important;
 }
 
 .image {
