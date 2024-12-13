@@ -1,1 +1,58 @@
-<p>heroes works!</p>
+<div class="container">
+    <!--  @for (item of items; track item.id){-->
+    <!--      <h3>{{ item.display_name}}</h3>-->
+
+    <!--  }-->
+    <div class="d-flex mt-5">
+        <a class="fs-4 nav-link" routerLink="/">
+            < Home</a>
+                <h2 class="mx-auto">Heroes</h2>
+    </div>
+
+
+    <div class="row mt-5">
+        @for (hero of heroes; track hero.id){
+        <a class="nav-link" (click)="goToHero(hero.name)">
+            <div class="col-lg-12" >
+                <div class="heroes m-3 p-3 bg-secondary shadow-sm overflow-hidden ">
+                    <div class="charStats">
+                        <img src="{{apiURL}}/{{hero.image}}" alt="{{hero.display_name}}"
+                            class="image img-fluid rounded-circle">
+                        <p class="p-2 fs-4 mb-0">{{hero.display_name}}</p>
+                        <p class="p-2 fs-4 mb-0 ">{{hero.roles.join(', ')}}</p>
+                        @for (heroStats of heroesStats; track heroStats.hero_id) {
+                        @if (heroStats.hero_id == hero.id) {
+                        <div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success " role="progressbar"
+                                    [style.width.%]="heroStats.pickrate"
+                                    [attr.aria-valuenow]="round(heroStats.pickrate, 2)" aria-valuemin="0"
+                                    aria-valuemax="100">
+                                    {{ round(heroStats.pickrate, 2) }}%
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success " role="progressbar"
+                                    [style.width.%]="heroStats.winrate"
+                                    [attr.aria-valuenow]="round(heroStats.winrate, 2)" aria-valuemin="0"
+                                    aria-valuemax="100">
+                                    {{ round(heroStats.winrate, 2) }}%
+                                </div>
+                            </div>
+
+                        </div>
+
+                        }
+                        }
+                    </div>
+                </div>
+            </div>
+        </a>
+        }
+
+    </div>
+
+
+</div>

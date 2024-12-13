@@ -1,0 +1,25 @@
+.charHeadlineFont{
+    font-size: 3rem;
+}
+
+.charSubHeadlines{
+    font-size: 1.75rem;
+}
+
+.charAbilitesHeadline{
+    font-size: 1.5rem;
+}
+
+.abilitieBox{
+    border: 1px solid black;
+}
+
+.imgHero{
+    box-shadow: rgba(0, 0, 0, 0.84) 0px 3px 8px;
+}
+
+.imgAbilites{
+    width: 115px;
+    height: 115px;
+
+}

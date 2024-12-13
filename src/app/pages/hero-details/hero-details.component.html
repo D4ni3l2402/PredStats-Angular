@@ -1,0 +1,36 @@
+<div class="container">
+    <!--  @for (item of items; track item.id){-->
+    <!--      <h3>{{ item.display_name}}</h3>-->
+
+    <!--  }-->
+    <div class="d-flex mt-5">
+        <a class="fs-4 nav-link" routerLink="/heroes">
+            < Home</a>
+                <h2 class="mx-auto">{{ hero?.display_name }}</h2>
+    </div>
+
+    <div class="bg-secondary p-5 ">
+        <div class="d-flex flex-row gap-5 charSubHeadlines">
+            <img src="{{apiURL}}/{{hero?.image}}" class="imgHero" width="300px" alt="">
+            <div>
+                <p class="charHeadlineFont"> NAME: {{ hero?.display_name }}</p>
+                <p> CLASS: {{ hero?.classes?.join(', ') }} </p>
+                <p> ROLES: {{ hero?.roles?.join(', ') }} </p>
+            </div>
+        </div>
+        <div class="charHeadlineFont mt-5">ABILITIES</div>
+        <div class="">
+            @for (abilitie of abilities; track abilitie) {
+            <div class="d-flex flex-row gap-3 abilitieBox my-3 bg-primary">
+                <img src="{{apiURL}}/{{abilitie[1].image}}" class="imgAbilites" alt="">
+                <div class="pt-2">
+                    <p class="charAbilitesHeadline">{{ abilitie[1].display_name }}</p>
+                    <p>{{ removeHTMLTags(abilitie[1].game_description) }}</p>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+
+</div>
