@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {ItemsService} from '../../services/items.service';
 import {RouterLink, Router, ActivatedRoute} from '@angular/router';
 import {Item} from '../../interfaces/item';
@@ -20,10 +20,7 @@ export class ItemsComponent implements OnInit {
 
   route = inject(ActivatedRoute);
 
-  constructor(private itemsService: ItemsService, private router: Router) {
-
-
-
+  constructor(private itemsService: ItemsService, private router: Router, private element: ElementRef) {
 
   }
 
@@ -49,6 +46,15 @@ export class ItemsComponent implements OnInit {
           this.filteredItems = this.items.filter(
             (item) => item.hero_class === category
           );
+          setTimeout(() => {
+            let cat = this.element.nativeElement.querySelectorAll('.category');
+            cat.forEach((c: Element) => {
+              c.classList.remove('active');
+              if(c.textContent === category) {
+                c.classList.add('active');
+              }
+            });
+          }, 25);
         } else {
           this.filteredItems = this.items; // Zeige alle Items, wenn keine Kategorie angegeben ist
         }
@@ -57,6 +63,8 @@ export class ItemsComponent implements OnInit {
       });
     });
   }
+
+
 
   goToItem(id: string) {
     this.router.navigate(['/items', id]);
@@ -71,6 +79,15 @@ export class ItemsComponent implements OnInit {
     this.itemsService.getItems().subscribe((data: Item[]) => {
       data.sort((a, b) => a.name.localeCompare(b.name));
       this.filteredItems = data.filter((item) => item.hero_class === category);
+
+    });
+
+    let cat = this.element.nativeElement.querySelectorAll('.category');
+    cat.forEach((c: Element) => {
+      c.classList.remove('active');
+      if(c.textContent === category) {
+        c.classList.add('active');
+      }
     });
   }
 

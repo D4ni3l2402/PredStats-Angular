@@ -1,1 +1,12 @@
-<p>players works!</p>
+<div class="container">
+  <div class="d-flex mt-header">
+    <a class="fs-4 nav-link" routerLink="/">< Home</a>
+    <h2 class="mx-auto">Players</h2>
+  </div>
+
+  @for(player of players; track player.id){
+    <h1>{{player.display_name}}</h1>
+  }
+
+
+</div>

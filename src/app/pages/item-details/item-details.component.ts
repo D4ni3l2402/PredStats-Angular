@@ -18,6 +18,7 @@ export class ItemDetailsComponent {
   statsEntries: [string, any][] = [];
   effects: Effect[] | null = [];
   requirements: string[] = [];
+  buildPaths: string[] = [];
   apiURL: string = "https://omeda.city/";
 
     constructor(private route: ActivatedRoute, private itemsService: ItemsService) {
@@ -29,6 +30,7 @@ export class ItemDetailsComponent {
           this.statsEntries = Object.entries(data.stats);
           this.effects = data.effects;
           this.requirements = data.requirements;
+          this.buildPaths = data.build_paths;
 
 
           setTimeout(() => {

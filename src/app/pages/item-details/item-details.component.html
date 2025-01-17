@@ -51,27 +51,40 @@
 
   </div>
 
-  <div class="row justify-content-between">
+  <div class="row justify-content-between mb-4">
     <div class="col-lg-5 p-3 bg-secondary">
       <h3 class="fs-3 text-center">Requirements</h3>
       <div class="d-flex justify-content-center gap-3">
-        @for (req of requirements; track req) {
-          <a routerLink="/items/{{req}}">
-            <div class="item bg-highlight shadow-lg">
-              <img src="{{apiURL}}/{{findItem(req)?.image}}" alt="" class="img-fluid">
+        @if(requirements && requirements.length > 0){
+          @for (req of requirements; track req) {
+            <a routerLink="/items/{{req}}">
+              <div class="item bg-highlight shadow-lg">
+                <img src="{{apiURL}}/{{findItem(req)?.image}}" alt="" class="img-fluid">
 
-            </div>
-          </a>
+              </div>
+            </a>
+          }
+        } @else {
+          <h1 class="text-center mt-5">No requirements</h1>
         }
       </div>
     </div>
 
     <div class="col-lg-5 p-3 bg-secondary">
-      <h3 class="fs-3 text-center">Requirements</h3>
-      <div class="d-flex gap-3">
-        <div class="item  bg-highlight shadow-lg"></div>
-        <div class="item  bg-highlight shadow-lg"></div>
+      <h3 class="fs-3 text-center">Build Into</h3>
+      <div class="d-flex justify-content-center flex-wrap gap-3">
+        @if(buildPaths && buildPaths.length > 0){
+          @for (build of buildPaths; track build) {
+            <a routerLink="/items/{{build}}">
+              <div class="item bg-highlight shadow-lg">
+                <img src="{{apiURL}}/{{findItem(build)?.image}}" alt="" class="img-fluid">
 
+              </div>
+            </a>
+          }
+        } @else {
+          <h1 class="text-center mt-5">No build paths</h1>
+        }
       </div>
     </div>
   </div>
