@@ -5,6 +5,7 @@ import {HeroesComponent} from './pages/heroes/heroes.component';
 import {HeroDetailsComponent } from './pages/hero-details/hero-details.component';
 import {PlayersComponent} from './pages/players/players.component';
 import {ItemDetailsComponent} from './pages/item-details/item-details.component';
+import {PlayerDetailsComponent} from './pages/player-details/player-details.component';
 
 export const routes: Routes = [
   { path: "",
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: "players",
     component: PlayersComponent
+  },
+  {
+    path: "players/:id",
+    component: PlayerDetailsComponent
   }
 ];
 

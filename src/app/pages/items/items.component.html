@@ -9,49 +9,51 @@
   </div>
 
   <div class="row mt-5">
-    @for (category of categories; track category){
+    @for (category of categories; track category) {
       <div class="col-lg-2">
-        <div class="category p-2 text-center bg-secondary my-2 my-lg-0" (click)="changeCategory(category)">{{category}}</div>
+        <div class="category p-2 text-center bg-secondary my-2 my-lg-0"
+             (click)="changeCategory(category)">{{ category }}
+        </div>
       </div>
     }
   </div>
 
-<div class="row mt-5">
-  @if(filteredItems){
-    @for (item of filteredItems; track item.id){
-      <div class="col-lg-3 ">
-        <div class="item m-3 p-2 text-center bg-secondary shadow-sm overflow-hidden">
-          <a class="nav-link" (click)="goToItem(item.name)">
-            <img src="{{apiURL}}/{{item.image}}" alt="{{item.display_name}}" class="image img-fluid">
-            <p class="">{{item.display_name}}</p>
-            @if(item.total_price){
-              <p class=""><span class="text-warning">{{item.total_price}}</span> Gold</p>
-            } @else {
-              <p>Free</p>
-            }
-          </a>
-        </div>
-      </div>
-    }
-  } @else {
-  @for (item of items; track item.id){
-  <div class="col-lg-3 ">
-    <div class="item m-3 p-2 text-center bg-secondary shadow-sm overflow-hidden">
-      <a class="nav-link" (click)="goToItem(item.name)">
-        <img src="{{apiURL}}/{{item.image}}" alt="{{item.display_name}}" class="image img-fluid">
-        <p class="">{{item.display_name}}</p>
-        @if(item.total_price){
-          <p class=""><span class="text-warning">{{item.total_price}}</span> Gold</p>
-          } @else {
-          <p>Free</p>
-          }
+  <div class="row mt-5">
+    @if (filteredItems) {
+      @for (item of filteredItems; track item.id) {
+        <div class="col-lg-3 ">
+          <div class="item m-3 p-2 text-center bg-secondary shadow-sm overflow-hidden">
+            <a class="nav-link" (click)="goToItem(item.name)">
+              <img src="{{apiURL}}/{{item.image}}" alt="{{item.display_name}}" class="image img-fluid">
+              <p class="">{{ item.display_name }}</p>
+              @if (item.total_price) {
+                <p class=""><span class="text-warning">{{ item.total_price }}</span> Gold</p>
+              } @else {
+                <p>Free</p>
+              }
             </a>
           </div>
         </div>
-            }
-  }
+      }
+    } @else {
+      @for (item of items; track item.id) {
+        <div class="col-lg-3 ">
+          <div class="item m-3 p-2 text-center bg-secondary shadow-sm overflow-hidden">
+            <a class="nav-link" (click)="goToItem(item.name)">
+              <img src="{{apiURL}}/{{item.image}}" alt="{{item.display_name}}" class="image img-fluid">
+              <p class="">{{ item.display_name }}</p>
+              @if (item.total_price) {
+                <p class=""><span class="text-warning">{{ item.total_price }}</span> Gold</p>
+              } @else {
+                <p>Free</p>
+              }
+            </a>
+          </div>
+        </div>
+      }
+    }
 
-</div>
+  </div>
 
 
 </div>

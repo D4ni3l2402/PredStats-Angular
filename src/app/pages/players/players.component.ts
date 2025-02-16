@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Component, inject, OnInit} from '@angular/core';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Player} from '../../interfaces/player';
 import {PlayersService} from '../../services/players.service';
 
@@ -12,14 +12,21 @@ import {PlayersService} from '../../services/players.service';
 export class PlayersComponent implements OnInit {
 
   players: Player[] = [];
+  apiURL = "https://omeda.city/";
 
-  constructor(private playerService: PlayersService) {
+  route = inject(ActivatedRoute);
+
+  constructor(private playerService: PlayersService, private router: Router) {
   }
 
   ngOnInit() {
     this.playerService.getPlayers().subscribe((data: Player[]) => {
       this.players = data;
     });
+  }
+
+  goToPlayer(id: number) {
+    this.router.navigate(['/players', id]);
   }
 
 }

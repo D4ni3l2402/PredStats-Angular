@@ -11,6 +11,9 @@ export interface Player {
   most_played_hero: number;
   most_played_role: string;
   blocked: boolean;
-
+  rank_image: string;
+  region: string;
+  leaderboard_rank: number;
+  rank_title: string;
 }
 
