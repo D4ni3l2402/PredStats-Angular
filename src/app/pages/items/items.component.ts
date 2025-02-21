@@ -50,11 +50,12 @@ export class ItemsComponent implements OnInit {
             let cat = this.element.nativeElement.querySelectorAll('.category');
             cat.forEach((c: Element) => {
               c.classList.remove('active');
-              if(c.textContent === category) {
+              console.log(category)
+              if(c.textContent?.trim() == category) {
                 c.classList.add('active');
               }
             });
-          }, 25);
+          }, 20);
         } else {
           this.filteredItems = this.items; // Zeige alle Items, wenn keine Kategorie angegeben ist
         }
@@ -70,7 +71,17 @@ export class ItemsComponent implements OnInit {
     this.router.navigate(['/items', id]);
   }
 
-  changeCategory(category: string) {
+
+changeCategory(category: string) {
+  const currentCategory = this.route.snapshot.queryParams['category'];
+
+  if (currentCategory === category) {
+    this.router.navigate([], {
+      queryParams: { category: null },
+      queryParamsHandling: 'merge'
+    });
+    this.filteredItems = this.items;
+  } else {
     this.router.navigate([], {
       queryParams: { category },
       queryParamsHandling: 'merge'
@@ -79,16 +90,17 @@ export class ItemsComponent implements OnInit {
     this.itemsService.getItems().subscribe((data: Item[]) => {
       data.sort((a, b) => a.name.localeCompare(b.name));
       this.filteredItems = data.filter((item) => item.hero_class === category);
-
-    });
-
-    let cat = this.element.nativeElement.querySelectorAll('.category');
-    cat.forEach((c: Element) => {
-      c.classList.remove('active');
-      if(c.textContent === category) {
-        c.classList.add('active');
-      }
     });
   }
+
+  let cat = this.element.nativeElement.querySelectorAll('.category');
+  cat.forEach((c: Element) => {
+    c.classList.remove('active');
+    if (c.textContent === category && currentCategory !== category) {
+      c.classList.add('active');
+    }
+  });
+}
+
 
 }

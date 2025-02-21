@@ -29,4 +29,9 @@ export class PlayersComponent implements OnInit {
     this.router.navigate(['/players', id]);
   }
 
+  getRankColor(rankTitle: string) {
+    return this.playerService.getRankColor(rankTitle);
+  }
+
+
 }

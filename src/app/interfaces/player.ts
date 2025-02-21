@@ -14,6 +14,6 @@ export interface Player {
   rank_image: string;
   region: string;
   leaderboard_rank: number;
-  rank_title: string;
+  rank_title: string | undefined;
 }
 
