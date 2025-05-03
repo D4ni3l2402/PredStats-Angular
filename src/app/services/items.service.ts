@@ -9,12 +9,12 @@ import {Item} from '../interfaces/item';
 export class ItemsService {
 
   http = inject(HttpClient);
-  private apiURL = "https://omeda.city/items"
+  private apiURL = "http://localhost:3000/api/items"
 
   constructor() { }
 
   getItems(): Observable<Item[]> {
-    return this.http.get<Item[]>(this.apiURL + ".json");
+    return this.http.get<Item[]>(this.apiURL);
   }
 
   getItem(id: number | null): Observable<Item> {

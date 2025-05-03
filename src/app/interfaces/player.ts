@@ -15,5 +15,6 @@ export interface Player {
   region: string;
   leaderboard_rank: number;
   rank_title: string | undefined;
+  is_active: boolean;
 }
 

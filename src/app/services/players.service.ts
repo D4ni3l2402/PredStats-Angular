@@ -10,20 +10,20 @@ import {PlayerStats} from '../interfaces/playerstats';
 export class PlayersService {
 
   http = inject(HttpClient);
-  private apiPlayersURL = "https://omeda.city/players"
+  private apiPlayersURL = "http://localhost:3000/api/players"
 
   constructor() { }
 
   getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.apiPlayersURL + ".json");
+    return this.http.get<Player[]>(this.apiPlayersURL);
   }
 
   getPlayer(id: number): Observable<Player> {
-    return this.http.get<Player>(this.apiPlayersURL + "/" + id + ".json");
+    return this.http.get<Player>(this.apiPlayersURL + "/" + id);
   }
 
   getPlayerStats(id: number): Observable<PlayerStats> {
-    return this.http.get<PlayerStats>(this.apiPlayersURL + "/" + id + "/statistics.json");
+    return this.http.get<PlayerStats>(this.apiPlayersURL + "/" + id + "/statistics");
   }
 
 

@@ -8,17 +8,17 @@ import {Observable} from 'rxjs';
 export class HeroesService {
 
   http = inject(HttpClient);
-  private apiHeroesURL = "https://omeda.city/heroes"
-  private apiStatsURL = "https://omeda.city/dashboard/hero_statistics.json/"
+  private apiHeroesURL = "http://localhost:3000/api/heroes"
+  private apiStatsURL = "http://localhost:3000/api/hero_stats"
 
   constructor() { }
 
   getHeroes(): Observable<any> {
-    return this.http.get(this.apiHeroesURL + ".json");
+    return this.http.get(this.apiHeroesURL );
   }
 
   getHero(id: number): Observable<any> {
-    return this.http.get(this.apiHeroesURL + "/" + id + ".json");
+    return this.http.get(this.apiHeroesURL + "/" + id );
   }
 
   getHeroStats(): Observable<any> {
