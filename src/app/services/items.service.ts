@@ -18,7 +18,7 @@ export class ItemsService {
   }
 
   getItem(id: number | null): Observable<Item> {
-    return this.http.get<Item>(this.apiURL + "/" + id + ".json");
+    return this.http.get<Item>(this.apiURL + "/" + id);
   }
 
 }

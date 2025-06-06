@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Player} from '../interfaces/player';
 import {PlayerStats} from '../interfaces/playerstats';
+import {Matches} from '../interfaces/matches';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class PlayersService {
 
   getPlayerStats(id: number): Observable<PlayerStats> {
     return this.http.get<PlayerStats>(this.apiPlayersURL + "/" + id + "/statistics");
+  }
+
+  getPlayerMatches(id: number): Observable<{ matches: Matches[] }> {
+    return this.http.get<{ matches: Matches[] }>(this.apiPlayersURL + "/" + id + "/matches");
   }
 
 

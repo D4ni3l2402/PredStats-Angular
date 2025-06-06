@@ -1,0 +1,22 @@
+.win {
+  background-image: linear-gradient(to right, #00ff00, transparent 7.5rem);
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.lose {
+  background-image: linear-gradient(to right, #ff0000, transparent 7.5rem);
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.heroImage {
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.roleImage {
+  position: absolute;
+  width: 50px;
+  bottom: -20px;
+  left: 20px;
+}

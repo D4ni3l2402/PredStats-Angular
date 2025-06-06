@@ -3,7 +3,26 @@
   height: 200px;
 }
 
+.heroImg {
+  width: 30px !important;
+}
+
 .vp {
   top: 45%;
   left: 50%;
 }
+
+.pg-bar-background {
+  background-color: rgba(146, 146, 241, 0.43);
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 20px;
+}
+
+.pg-bar {
+  background-color: rgb(146, 146, 241);
+  min-height: 100%;
+}
+

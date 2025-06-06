@@ -7,4 +7,9 @@ export interface PlayerStats {
   avg_kda: number[];
   avg_kdar: number;
   favorite_hero: Hero;
+  favorite_role: string;
+  winrate: number;
+  kills: number;
+  deaths: number;
+  assists: number;
 }

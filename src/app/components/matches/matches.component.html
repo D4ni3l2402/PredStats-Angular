@@ -1,0 +1,42 @@
+<p class="mt-5">matches works! {{player?.display_name}}</p>
+@for ( match of matches; track match.id) {
+<!--  <p [style.background-color]="hasWon(match) ? 'green' : 'red'">{{match?.id}}</p>-->
+
+<div class="row">
+    <div [className]="hasWon(match) ? 'win d-flex justify-content-between align-items-center py-5' : 'lose d-flex justify-content-between align-items-center py-5' ">
+      <div class="">
+        @if (hasWon(match)){
+          <p class="m-0">Victory</p>
+        } @else {
+          <p class="m-0">Defeat</p>
+        }
+        <p class="m-0">{{match.game_mode}}</p>
+      </div>
+
+      <div class="position-relative d-flex gap-3 ">
+        <img src="{{apiURL}}/{{getHeroMatch(match).image}}" alt="{{player?.display_name}}" class="heroImage  ">
+        @if (match.game_mode == 'pvp' || match.game_mode == 'ranked' || match.game_mode == 'custom'){
+          <img src="{{getRoleImage(match)}}" alt="{{getRoleImage(match)}}" class="roleImage">
+        }
+
+        <div class="">
+          <p class="m-0">{{getHeroMatch(match).display_name}}</p>
+          <p class="m-0">Level: {{getPlayerMatch(match).level}}</p>
+        </div>
+      </div>
+
+      <div class="">
+        <p class="m-0">{{getPlayerMatch(match).performance_title}}</p>
+        <p class="m-0">{{getPlayerMatch(match).performance_score?.toFixed(1)}} PS</p>
+      </div>
+      <div class="">
+        <p class="m-0"><span>{{getPlayerMatch(match).kills}}</span> / <span>{{getPlayerMatch(match).deaths}}</span> / <span>{{getPlayerMatch(match).assists}}</span></p>
+      </div>
+      <div class="">sdgg</div>
+      <div class="">sdsd</div>
+    </div>
+
+</div>
+
+}
+

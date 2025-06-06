@@ -16,5 +16,14 @@ export interface Player {
   leaderboard_rank: number;
   rank_title: string | undefined;
   is_active: boolean;
+  team: string;
+  hero_id: number;
+  role: string;
+  level: number;
+  performance_title: string | undefined;
+  performance_score: number | undefined;
+  kills: number | undefined;
+  deaths: number | undefined;
+  assists: number   | undefined;
 }
 

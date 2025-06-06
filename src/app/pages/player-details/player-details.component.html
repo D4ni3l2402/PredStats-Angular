@@ -14,35 +14,35 @@
     <div class="row mt-5 g-5">
       <div class="col-lg-6 col-md-1">
         <div class="p-4 bg-secondary">
-          <div class="d-flex justify-content-center flex-column">
-            <div class="position-relative mx-auto mb-4">
-              <img src="{{apiURL}}/{{player?.rank_image}}" alt="{{player?.display_name}}" class="image img-fluid">
-              <span class="position-absolute vp translate-middle fs-5">{{player?.vp_total}}</span>
+          <div classa="d-flex justify-content-center flex-column">
+            <div class="position-relative d-flex justify-content-center mb-4">
+              <img src="{{apiURL}}/{{player.rank_image}}" alt="{{player.display_name}}" class="image img-fluid ">
+              <span class="position-absolute vp translate-middle fs-5">{{player.vp_total}}</span>
             </div>
 
-            <p class="text-center fs-2">{{player?.display_name}}</p>
-            <p class="text-center fs-3" [style.color]="getRankColor(player?.rank_title || '')">{{player?.rank_title}}</p>
+            <p class="text-center fs-2">{{player.display_name}}</p>
+            <p class="text-center fs-3" [style.color]="getRankColor(player.rank_title || '')">{{player.rank_title}}</p>
 
           </div>
 
           <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
             <p class="m-0 fs-5">Region: </p>
-            <p class="m-0 fs-5">{{player?.region}}</p>
+            <p class="m-0 fs-5">{{player.region}}</p>
           </div>
 
           <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
             <p class="m-0 fs-5">VP: </p>
-            <p class="m-0 fs-5">{{player?.vp_total}}</p>
+            <p class="m-0 fs-5">{{player.vp_total}}</p>
           </div>
 
           <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
             <p class="m-0 fs-5">Leaderboard Rank: </p>
-            <p class="m-0 fs-5">{{player?.leaderboard_rank}}</p>
+            <p class="m-0 fs-5">{{player.leaderboard_rank}}</p>
           </div>
 
           <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
             <p class="m-0 fs-5">Is active: </p>
-            @if(player?.is_active){
+            @if(player.is_active){
               <p class="m-0 fs-5 text-success">Yes</p>
             } @else {
               <p class="m-0 fs-5 text-danger">No</p>
@@ -54,11 +54,58 @@
       </div>
 
       <div class="col-lg-6 col-md-1">
-        <div class="p-4 bg-secondary">
-          dsd
+        <div class="p-4 bg-secondary h-100">
+          <h3 class="text-center">Statistics</h3>
+
+          <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
+            <p class="m-0 fs-5">Matches played: </p>
+            <p class="m-0 fs-5">{{playerStats?.matches_played}}</p>
+          </div>
+
+          <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
+            <p class="m-0 fs-5">Hours played: </p>
+            <p class="m-0 fs-5">{{playerStats?.hours_played}}</p>
+          </div>
+
+          <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
+            <p class="m-0 fs-5">Average Perfomance: </p>
+            <p class="m-0 fs-5">{{playerStats?.avg_performance_score}}</p>
+          </div>
+
+          <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
+            <p class="m-0 fs-5">Average KDS: </p>
+            <p class="m-0 fs-5"><span class="text-success">{{kills}}</span> / <span class="text-danger">{{deaths}}</span> / <span class="text-info">{{assists}}</span> ({{playerStats?.avg_kdar}})</p>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center px-3 py-2 mb-3 bg-highlight-secondary">
+            <p class="m-0 fs-5">Favorite Hero: </p>
+
+            <div class="d-flex column-gap-3 align-items-center">
+              <p class="m-0 fs-5">{{playerStats?.favorite_hero?.display_name}}</p>
+              <img src="{{apiURL}}/{{playerStats?.favorite_hero?.image}}" alt="{{playerStats?.favorite_hero?.display_name}}" class="rounded-circle w-25 heroImg">
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between px-3 py-2 mb-3 bg-highlight-secondary">
+            <p class="m-0 fs-5">Favorite Role: </p>
+            <p class="m-0 fs-5">{{playerStats?.favorite_role}}</p>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center px-3 py-2 mb-3 bg-highlight-secondary">
+            <p class="m-0 fs-5">Winrate: </p>
+<!--            <p class="m-0 fs-5">{{winrate}} %</p>-->
+            <div class="pg-bar-background">
+              <div class="pg-bar" [style.width]="winrate + '%'"></div>
+              <div class="d-flex justify-content-center align-items-center position-absolute w-100 z-3">{{winrate}} %</div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
+
+    <app-matches [player]="player"></app-matches>
   }
 } @else {
   <div class="w-100 h-100 mt-5 d-flex justify-content-center align-items-center">
