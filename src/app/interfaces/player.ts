@@ -25,5 +25,6 @@ export interface Player {
   kills: number | undefined;
   deaths: number | undefined;
   assists: number   | undefined;
+  inventory_data: number[] ;
 }
 

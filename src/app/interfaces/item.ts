@@ -1,5 +1,6 @@
 export interface Item {
   id: number;
+  game_id: number;
   name: string;
   display_name: string;
   image: string;

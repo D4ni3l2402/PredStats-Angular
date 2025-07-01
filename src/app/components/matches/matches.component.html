@@ -10,7 +10,13 @@
         } @else {
           <p class="m-0">Defeat</p>
         }
-        <p class="m-0">{{match.game_mode}}</p>
+        <p class="m-0">
+          @if(match.game_mode == "TEAM_VS_TEAM_RUSH"){
+            nitro
+          } @else {
+            {{match.game_mode}}
+          }
+        </p>
       </div>
 
       <div class="position-relative d-flex gap-3 ">
@@ -25,15 +31,26 @@
         </div>
       </div>
 
-      <div class="">
+      <div class="perfomance">
         <p class="m-0">{{getPlayerMatch(match).performance_title}}</p>
         <p class="m-0">{{getPlayerMatch(match).performance_score?.toFixed(1)}} PS</p>
       </div>
       <div class="">
         <p class="m-0"><span>{{getPlayerMatch(match).kills}}</span> / <span>{{getPlayerMatch(match).deaths}}</span> / <span>{{getPlayerMatch(match).assists}}</span></p>
       </div>
-      <div class="">sdgg</div>
-      <div class="">sdsd</div>
+      <div class="items">
+        @for (item of inventory; track item; let i = $index) {
+          <div [class.crest]="i === 0" [class.item]="i !== 0" class="grid">
+            <a (click)="goToItem(getItem(item).name)" class="">
+              @if(item != -1){
+                <img src="{{apiURL}}/{{getItem(item).image}}" alt="" class="inventoryImage">
+              }
+
+            </a>
+          </div>
+        }
+      </div>
+      <div class="players">sdsd</div>
     </div>
 
 </div>
